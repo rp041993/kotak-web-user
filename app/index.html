@@ -1,0 +1,60 @@
+
+<script src="scripts/controllers/main.js"></script>
+<html lang="en" ng-app="webApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+	<link href="css/fullcalendar.css" rel="stylesheet">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDpu1TUWPOLnJMrA42Co4Dmh1TxpI-qzUg",
+        authDomain: "onboardkotak.firebaseapp.com",
+        databaseURL: "https://onboardkotak.firebaseio.com",
+        projectId: "onboardkotak",
+        storageBucket: "onboardkotak.appspot.com",
+        messagingSenderId: "971315573840"
+
+    };
+    firebase.initializeApp(config);
+  </script>
+</head>
+<body>
+
+  <div ng-view></div>
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/datepicker3.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <script src="bower_components/angular/angular.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script> -->
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="bower_components/angularfire/dist/angularfire.js"></script>
+  <script src="app.js"></script>
+  <script type="text/javascript" src="login/login.js"></script>
+  <script type="text/javascript" src="register/register.js"></script>
+  <script type="text/javascript" src="welcome/welcome.js"></script>
+  <script type="text/javascript" src="addPost/addPost.js"></script>
+  <script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="js/calendar.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/jquery.datetimeselector.min.js"></script>
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <!-- <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script> -->
+</body>
+</html>

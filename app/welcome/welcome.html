@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kotak-Onboard</title>
+</head>
+<body ng-controller="WelcomeCtrl">
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="#"><span>Kotak</span>Onboard</a>
+				
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<div class="profile-userpic">
+				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+			</div>
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name">username</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		
+		<ul class="nav menu">
+			<li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+			
+			<li ng-click="logout()"><a href="#"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+		</ul>
+	</div><!--/.sidebar-->
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="#">
+						<em class="fa fa-home"></em>
+					</a></li>
+					<li class="active">Dashboard</li>
+				</ol>
+			</div><!--/.row-->
+			
+			<div class="row">
+				<div class="col-lg-12">
+					<button name="Punching" class="btn btn-success" ng-click="checkIpPunching()"> Punch</button>
+				</div>
+				<div class="col-lg-12" style="min-height: 100px;"></div>
+				<!-- Calender -->
+				<div class="col-lg-12">
+						<div class="col-md-7" style="margin-left: 20%;" >
+								<div id='calendar'></div>
+				</div>
+				</div>
+				
+				</div>
+			</div><!--/.row-->
+			
+			
+					</div>
+					<!-- Model remote punch -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <h5 class="modal-title" id="exampleModalLabel">Fill Below Details</h5>
+								  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								  </button>
+								</div>
+								<div class="modal-body">
+										<div class="panel-body">
+												<form class="form-horizontal" action="" method="post">
+													<fieldset>
+														<!-- Name input-->
+														<div class="form-group">
+															<label class="col-md-3 control-label" for="name">Date</label>
+															<div class="col-md-9">
+																<input id="name" ng-model="user.date" required placeholder="Your name" class="form-control" type="date">
+															</div>
+														</div>
+													
+														<!-- Email input-->
+														<div class="form-group">
+															<label class="col-md-3 control-label" for="Time">Time</label>
+															<div class="col-md-9">
+																	<div>
+																			<p>
+																				<input type="text" id="example3" name="example3" />
+																			</p>
+																					</div>
+															</div>
+														</div>
+														
+														<!-- Message body -->
+														<div class="form-group">
+															<label class="col-md-3 control-label"  for="message">Select Your location</label>
+															<div class="col-md-9">
+																	<div id="locationField">
+																			<input id="autocomplete" required ng-model="user.address" placeholder="Enter your address" type="text" />
+																	</div>
+															</div>
+														</div>
+														
+														<!-- Form actions -->
+														
+													</fieldset>
+												</form>
+											</div>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								  <button type="button" class="btn btn-primary" ng-click="remotePunching();">Save changes</button>
+								</div>
+							  </div>
+							</div>
+							</div>
+							<!-- Model for shortbreak -->
+								 <!-- Modal -->
+								 <div class="modal fade" id="ShortBreakModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title">Add Shorbreak- <span ng-model="ShortBreakDateLabel" id="ShortBreakDateLabel"></span></h4>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+														</button>
+											</div>
+											<div class="modal-body">
+													<div class="panel-body">
+															<form class="form-horizontal" action="" method="post">
+																<fieldset>
+													    <div class="form-group">
+															<label class="col-md-3 control-label" for="Time">Time</label>
+															<div class="col-md-9">
+																	<div>
+																			<p>
+																				<input type="text" id="example4" name="example4" />
+																			</p>
+																					</div>
+															</div>
+														</div>
+														<input type="hidden" ng-model="user.shortBreakDate" id="shortBreakDate">
+														<div class="form-group">
+																<label class="col-md-3 control-label" for="Time">Reason</label>
+																<div class="col-md-9">
+																			<input type="text" ng-model="user.shortBreaKMessage" placeholder="Reason for shortbreak" >
+																</div>
+															</div>
+											</fieldset>
+										</form>
+											</div>
+											<div class="modal-footer">
+													<button type="button" class="btn btn-primary" ng-click="shortBreakPunching();">Save changes</button>
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+	
+
+
+					</body>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_Og-Ov4ArtkOvPWsog69CRbwGDaUKbxU&libraries=places&callback=initAutocomplete" ></script>
+<script>
+	var placeSearch, autocomplete, geocoder;
+
+function initAutocomplete() {
+  geocoder = new google.maps.Geocoder();
+  autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('autocomplete'))/*,
+      {types: ['(cities)']}*/);
+
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+function codeAddress(address) {
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        alert(results[0].geometry.location);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+function fillInAddress() {
+  var place = autocomplete.getPlace();
+  alert(place);
+  //   codeAddress(document.getElementById('autocomplete').value);
+}
+</script> -->
+<script>
+	var datenew;
+	var selectedtime;
+	$(document).ready(function() {
+
+var date = new Date();
+var d = date.getDate();
+var m = date.getMonth();
+var y = date.getFullYear();
+
+var events_array = [
+		{
+		title: 'Test1',
+		start: new Date(2012, 8, 20),
+		tip: 'Personal tip 1'},
+{
+		title: 'Test2',
+		start: new Date(2012, 8, 21),
+		tip: 'Personal tip 2'}
+];
+
+$('#calendar').fullCalendar({
+		header: {
+				right: 'prev,next today',
+				left: 'title',
+				
+		},
+		selectable: true,
+		events: events_array,
+		eventRender: function(event, element) {
+				element.attr('title', event.tip);
+		},
+		
+			 select: function(start, end, jsEvent, view) {
+		 // start contains the date you have selected
+		 // end contains the end date. 
+		 // Caution: the end date is exclusive (new since v2).
+		 var allDay = !start.hasTime && !end.hasTime;
+		 var date=moment(start);
+		 $('#ShortBreakDateLabel').html(moment(start).format("DD/MM/YYYY"));
+		$('#ShortBreakModel').modal('show'); 
+		datenew=moment(start).format("DD/MM/YYYY");
+}
+		
+		
+});
+$("#example3").dateTimeSelector({format:'H:i:s'});
+			$("#example4").dateTimeSelector({format:'H:i:s'});
+			$(document).on("change", "select", function(){
+				var el = $(this).parents("div");
+				var val = el.children("p").children("input").val();
+				selectedtime= val;
+			});
+		});
+</script>
+
+			
+		
